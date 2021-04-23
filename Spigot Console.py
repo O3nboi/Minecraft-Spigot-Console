@@ -1,9 +1,14 @@
 from pathlib import Path
 import subprocess
-import requests
 from subprocess import Popen
 import shutil
 import os
+try:
+  import requests
+except ImportError:
+  print("Trying to Install required module: requests\n")
+  os.system('python -m pip install requests')
+import requests
 dir = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir)
 print("Welcome to the spigot server client! The current working directory is %s "% dir)
