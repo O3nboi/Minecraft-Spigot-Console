@@ -15,8 +15,9 @@ print("Welcome to the spigot server client! The current working directory is %s 
 if Path("BuildTools\BuildTools.jar").is_file():
     print("BuildTools Detected")
 else:
-    os.mkdir("BuildTools")
-    os.mkdir("BuildTools\Bukkit")
+    try:
+      os.mkdir("BuildTools")
+      os.mkdir("BuildTools\Bukkit")
     url = 'https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar'
     r = requests.get(url, allow_redirects=True)
     os.chdir('BuildTools')
