@@ -19,7 +19,7 @@ else:
       os.mkdir("BuildTools")
       os.mkdir("BuildTools\Bukkit")
     except:
-      
+      dir = dir
     url = 'https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar'
     r = requests.get(url, allow_redirects=True)
     os.chdir('BuildTools')
