@@ -26,7 +26,14 @@ else:
     open('BuildTools.jar', 'wb').write(r.content)
     os.chdir(dir)
     print("Succesfully Downloaded BuildTools")
-server = str(input("Input Server Name: "))
+def ask():
+  server = str(input("Input Server Name: "))
+  if server == "":
+    print("The server must have a name. Try again.")
+    server = ask()
+  else:
+    return server
+server = ask()
 if Path(server).is_dir():
     os.chdir(server)
     f = open("eula.txt","w")
