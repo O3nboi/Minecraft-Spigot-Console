@@ -3,6 +3,7 @@ import subprocess
 from subprocess import Popen
 import shutil
 import os
+import sys
 try:
   import requests
 except ImportError:
