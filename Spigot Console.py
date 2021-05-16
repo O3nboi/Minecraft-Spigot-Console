@@ -41,7 +41,7 @@ if Path(server).is_dir():
     f.write("#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).\n#Fri Apr 23 17:21:05 BST 2021\neula=true")
     f.close()
     print("Opening server now. Connect to this server at the ip \"127.0.0.1\" or \"localhost\"")
-    subprocess.call(str('java -jar -Xmx2048M \"spigot.jar\"'), shell=True)
+    subprocess.call(str('java -jar -Xmx2048M -Xms2048M \"spigot.jar\"'), shell=True)
 else :
     print("Not found..... creating")
     version = str(input("Input Server Version: "))
@@ -50,7 +50,7 @@ else :
         shutil.copy("BuildTools\spigot-%s.jar " % version, "%s\spigot.jar" % server)
     else :
         os.chdir("BuildTools")
-        os.system("java -Xmx1024M -jar BuildTools.jar --rev %s" % version)
+        os.system("java -Xmx1024M -Xms1024M -jar BuildTools.jar --rev %s" % version)
         os.chdir(dir)
         shutil.copy("BuildTools\spigot-%s.jar " % version, "%s\spigot.jar" % server)
     os.chdir(str(server))
@@ -59,4 +59,4 @@ else :
     f.close()
     print("Opening server now. Connect to this server at the ip \"127.0.0.1\" or \"localhost\"")
     wait(1)
-    Popen(str('java -jar -Xmx2048M spigot.jar'), shell=True)
+    subprocess.call(str('java -jar -Xmx2048M -Xms2048M \"spigot.jar\"'), shell=True)
